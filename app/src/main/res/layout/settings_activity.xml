@@ -1,0 +1,196 @@
+<LinearLayout xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:layout_gravity="http://schemas.android.com/apk/res-auto">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/settings_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        layout_gravity:layout_constraintEnd_toEndOf="parent"
+        layout_gravity:layout_constraintStart_toStartOf="parent"
+        layout_gravity:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:id="@+id/settingsBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_baseline_arrow_back_24" />
+
+        <TextView
+            android:id="@+id/toolbar_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/montserrat"
+            android:text="Settings"
+            android:textColor="#000"
+            android:textSize="20sp" />
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <ScrollView
+        android:id="@+id/scrollView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/appRelatedTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/montserrat"
+                android:text="@string/app_related"
+                android:textColor="#000"
+                android:textSize="@dimen/title"
+                android:textStyle="bold"
+                layout_gravity:layout_constraintStart_toStartOf="parent"
+                layout_gravity:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/privacyTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="35dp"
+                android:layout_marginLeft="35dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/montserrat"
+                android:text="@string/privacy"
+                android:textColor="#000"
+                android:textSize="20sp"
+                layout_gravity:layout_constraintStart_toStartOf="parent"
+                layout_gravity:layout_constraintTop_toBottomOf="@+id/appRelatedTextView" />
+
+            <TextView
+                android:id="@+id/termsOfUserTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="35dp"
+                android:layout_marginLeft="35dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/montserrat"
+                android:text="@string/terms_of_use"
+                android:textColor="#000"
+                android:textSize="20sp"
+                layout_gravity:layout_constraintStart_toStartOf="parent"
+                layout_gravity:layout_constraintTop_toBottomOf="@+id/privacyTextView" />
+
+            <TextView
+                android:id="@+id/aboutApp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="35dp"
+                android:layout_marginLeft="35dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/montserrat"
+                android:text="@string/about_the_app"
+                android:textColor="#000"
+                android:textSize="20sp"
+                layout_gravity:layout_constraintStart_toStartOf="parent"
+                layout_gravity:layout_constraintTop_toBottomOf="@+id/termsOfUserTextView" />
+
+            <View
+                android:id="@+id/divider"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginRight="20dp"
+                android:background="?android:attr/listDivider"
+                layout_gravity:layout_constraintEnd_toEndOf="parent"
+                layout_gravity:layout_constraintStart_toStartOf="parent"
+                layout_gravity:layout_constraintTop_toBottomOf="@+id/aboutApp" />
+
+            <TextView
+                android:id="@+id/devRelated"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/montserrat"
+                android:text="@string/dev_related"
+                android:textColor="#000"
+                android:textSize="@dimen/title"
+                android:textStyle="bold"
+                layout_gravity:layout_constraintStart_toStartOf="parent"
+                layout_gravity:layout_constraintTop_toBottomOf="@+id/divider" />
+
+            <TextView
+                android:id="@+id/appRateTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="35dp"
+                android:layout_marginLeft="35dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/montserrat"
+                android:text="@string/rate_the_app"
+                android:textColor="#000"
+                android:textSize="20sp"
+                layout_gravity:layout_constraintStart_toStartOf="parent"
+                layout_gravity:layout_constraintTop_toBottomOf="@+id/devRelated" />
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="35dp"
+                android:layout_marginLeft="35dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/montserrat"
+                android:text="@string/share_the_app"
+                android:textColor="#000"
+                android:textSize="20sp"
+                layout_gravity:layout_constraintStart_toStartOf="parent"
+                layout_gravity:layout_constraintTop_toBottomOf="@+id/appRateTextView" />
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="35dp"
+                android:layout_marginLeft="35dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/montserrat"
+                android:text="Contact Developer"
+                android:textColor="#000"
+                android:textSize="20sp"
+                layout_gravity:layout_constraintStart_toStartOf="parent"
+                layout_gravity:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+            <TextView
+                android:id="@+id/app_version"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="176dp"
+                android:layout_marginLeft="176dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="177dp"
+                android:layout_marginRight="177dp"
+                android:fontFamily="@font/montserrat"
+                android:text=""
+                android:textColor="#000"
+                android:textSize="18sp"
+                layout_gravity:layout_constraintEnd_toEndOf="parent"
+                layout_gravity:layout_constraintStart_toStartOf="parent"
+                layout_gravity:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+</LinearLayout>
