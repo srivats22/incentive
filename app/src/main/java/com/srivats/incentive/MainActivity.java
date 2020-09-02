@@ -1,14 +1,16 @@
 package com.srivats.incentive;
 
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -17,11 +19,28 @@ import android.view.View;
 import android.widget.Toast;
 
 import androidx.appcompat.widget.Toolbar;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.srivats.incentive.Adapter.TaskAdapter;
+import com.srivats.incentive.DB.TaskDatabase;
+import com.srivats.incentive.Helper.TaskModal;
 
-public class MainActivity extends AppCompatActivity {
-    FloatingActionButton fab;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.List;
+
+public class MainActivity extends AppCompatActivity implements TaskAdapter.OnNoteItemClick{
+    //Empty notes
+    private ConstraintLayout emptyLayout;
+    private RecyclerView recyclerView;
+    private TaskDatabase database;
+    private List<TaskModal> taskModal;
+    private TaskAdapter taskAdapter;
+    private FloatingActionButton fab;
+
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
@@ -33,15 +52,101 @@ public class MainActivity extends AppCompatActivity {
         myToolbar.setBackgroundColor(Color.parseColor("#ffffff"));
         setSupportActionBar(myToolbar);
 
-        fab = findViewById(R.id.addNotes);
+        loadView();
+        displayList();
+    }
+
+    private void loadView(){
+        emptyLayout = findViewById(R.id.empty_notes);
+        fab = findViewById(R.id.addTask);
+        recyclerView = findViewById(R.id.recycler_view);
+        recyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this));
+        taskModal = new ArrayList<>();
+        taskAdapter = new TaskAdapter(taskModal, MainActivity.this);
+        recyclerView.setAdapter(taskAdapter);
 
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getApplicationContext(), "Fab Clicked", Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(getApplicationContext(), AddTask.class);
+                startActivity(i);
             }
         });
     }
+
+    private void listVisibility(){
+        if(taskModal.size() == 0){
+            emptyLayout.setVisibility(View.VISIBLE);
+        }
+        emptyLayout.setVisibility(View.GONE);
+        taskAdapter.notifyDataSetChanged();
+    }
+
+    public void onNoteClick(final int pos) {
+        new AlertDialog.Builder(MainActivity.this)
+                .setTitle("Options:")
+                .setItems(new String[]{"View Tasks","Delete"}, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        switch (i) {
+                            case 0:
+                                Intent intent = new Intent(MainActivity.this, ViewTask.class);
+                                intent.putExtra("taskName", taskModal.get(pos).getTask_name());
+                                intent.putExtra("taskDesc", taskModal.get(pos).getTask_desc());
+                                intent.putExtra("taskReward", taskModal.get(pos).getTask_reward());
+                                startActivity(intent);
+                                break;
+                            case 1:
+                                database.getTaskDao().deleteTask(taskModal.get(pos));
+                                taskModal.remove(pos);
+                                Toast deleteToast = Toast.makeText(getApplicationContext(), "Task Deleted", Toast.LENGTH_SHORT);
+                                deleteToast.setGravity(Gravity.CENTER, 0, 0);
+                                deleteToast.show();
+
+                                Toast rewardToast = Toast.makeText(getApplicationContext(), "You can now enjoy your reward", Toast.LENGTH_LONG);
+                                rewardToast.setGravity(Gravity.CENTER, 0, 0);
+                                rewardToast.show();
+                                listVisibility();
+                                break;
+                        }
+                    }
+                }).show();
+    }
+
+    private void displayList() {
+        database = TaskDatabase.getInstance(MainActivity.this);
+        new RetrieveTask(this).execute();
+    }
+
+    private static class RetrieveTask extends AsyncTask<Void, Void, List<TaskModal>> {
+
+        private WeakReference<MainActivity> activityReference;
+
+        // only retain a weak reference to the activity
+        RetrieveTask(MainActivity context) {
+            activityReference = new WeakReference<>(context);
+        }
+
+        @Override
+        protected List<TaskModal> doInBackground(Void... voids) {
+            if (activityReference.get() != null)
+                return activityReference.get().database.getTaskDao().getTasks();
+            else
+                return null;
+        }
+
+        @Override
+        protected void onPostExecute(List<TaskModal> notes) {
+            if (notes != null && notes.size() > 0) {
+                activityReference.get().taskModal.clear();
+                activityReference.get().taskModal.addAll(notes);
+                // hides empty text view
+                activityReference.get().emptyLayout.setVisibility(View.GONE);
+                activityReference.get().taskAdapter.notifyDataSetChanged();
+            }
+        }
+    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
@@ -60,7 +165,12 @@ public class MainActivity extends AppCompatActivity {
                 // If we got here, the user's action was not recognized.
                 // Invoke the superclass to handle it.
                 return super.onOptionsItemSelected(item);
-
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        database.cleanUp();
+        super.onDestroy();
     }
 }

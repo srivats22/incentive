@@ -1,4 +1,5 @@
-<LinearLayout xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
@@ -9,7 +10,6 @@
         android:id="@+id/settings_toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="?attr/colorPrimary"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
         layout_gravity:layout_constraintEnd_toEndOf="parent"
@@ -53,25 +53,35 @@
                 android:layout_marginTop="20dp"
                 android:fontFamily="@font/montserrat"
                 android:text="@string/app_related"
-                android:textColor="#000"
+                android:textColor="#008080"
                 android:textSize="@dimen/title"
                 android:textStyle="bold"
                 layout_gravity:layout_constraintStart_toStartOf="parent"
                 layout_gravity:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/privacyTextView"
+            <LinearLayout
+                android:orientation="horizontal"
+                android:id="@+id/privacyLayout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="35dp"
                 android:layout_marginLeft="35dp"
                 android:layout_marginTop="10dp"
-                android:fontFamily="@font/montserrat"
-                android:text="@string/privacy"
-                android:textColor="#000"
-                android:textSize="20sp"
                 layout_gravity:layout_constraintStart_toStartOf="parent"
-                layout_gravity:layout_constraintTop_toBottomOf="@+id/appRelatedTextView" />
+                layout_gravity:layout_constraintTop_toBottomOf="@+id/appRelatedTextView">
+
+                <TextView
+                    android:id="@+id/privacyTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat"
+                    android:text="@string/privacy"
+                    android:textColor="#000"
+                    android:textSize="20sp"
+                    layout_gravity:layout_constraintStart_toStartOf="parent"
+                    layout_gravity:layout_constraintTop_toBottomOf="@+id/appRelatedTextView" />/>
+
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/termsOfUserTextView"
@@ -85,7 +95,7 @@
                 android:textColor="#000"
                 android:textSize="20sp"
                 layout_gravity:layout_constraintStart_toStartOf="parent"
-                layout_gravity:layout_constraintTop_toBottomOf="@+id/privacyTextView" />
+                layout_gravity:layout_constraintTop_toBottomOf="@+id/privacyLayout" />
 
             <TextView
                 android:id="@+id/aboutApp"
@@ -124,7 +134,7 @@
                 android:layout_marginTop="20dp"
                 android:fontFamily="@font/montserrat"
                 android:text="@string/dev_related"
-                android:textColor="#000"
+                android:textColor="#009688"
                 android:textSize="@dimen/title"
                 android:textStyle="bold"
                 layout_gravity:layout_constraintStart_toStartOf="parent"
