@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
@@ -39,6 +40,9 @@ public class AddTask extends AppCompatActivity {
         taskName = findViewById(R.id.taskNameEditText);
         taskDesc = findViewById(R.id.taskDescEditText);
         taskReward = findViewById(R.id.taskRewardEditText);
+        taskName.getEditText().setInputType(InputType.TYPE_TEXT_FLAG_AUTO_CORRECT);
+        taskDesc.getEditText().setInputType(InputType.TYPE_TEXT_FLAG_AUTO_CORRECT);
+        taskReward.getEditText().setInputType(InputType.TYPE_TEXT_FLAG_AUTO_CORRECT);
         //Database related
         taskDatabase = TaskDatabase.getInstance(AddTask.this);
 

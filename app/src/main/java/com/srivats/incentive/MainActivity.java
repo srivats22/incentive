@@ -24,6 +24,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.analytics.FirebaseAnalytics;
 import com.srivats.incentive.Adapter.TaskAdapter;
 import com.srivats.incentive.DB.TaskDatabase;
 import com.srivats.incentive.Helper.TaskModal;
@@ -51,7 +52,6 @@ public class MainActivity extends AppCompatActivity implements TaskAdapter.OnNot
         myToolbar.setElevation(0);
         myToolbar.setBackgroundColor(Color.parseColor("#ffffff"));
         setSupportActionBar(myToolbar);
-
         loadView();
         displayList();
     }
@@ -75,10 +75,13 @@ public class MainActivity extends AppCompatActivity implements TaskAdapter.OnNot
     }
 
     private void listVisibility(){
+        int emptyVisibility = View.GONE;
         if(taskModal.size() == 0){
-            emptyLayout.setVisibility(View.VISIBLE);
+            if(emptyLayout.getVisibility() == View.GONE){
+                emptyVisibility = View.VISIBLE;
+            }
         }
-        emptyLayout.setVisibility(View.GONE);
+        emptyLayout.setVisibility(emptyVisibility);
         taskAdapter.notifyDataSetChanged();
     }
 

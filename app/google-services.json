@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "474887074959",
+    "firebase_url": "https://todo-incentive.firebaseio.com",
+    "project_id": "todo-incentive",
+    "storage_bucket": "todo-incentive.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:474887074959:android:98ee26dcde4a9b21a6acfa",
+        "android_client_info": {
+          "package_name": "com.srivats.incentive"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "474887074959-j8crdecm62p7v0n39d5airv6pckdsc2a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCkuIDjo0q6-qRwd0FAXKwoYm5tlYa4-NA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "474887074959-j8crdecm62p7v0n39d5airv6pckdsc2a.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -17,7 +17,7 @@ import androidx.preference.PreferenceFragmentCompat;
 
 public class SettingsActivity extends AppCompatActivity {
     ImageButton back;
-    TextView appVersion;
+    TextView appVersion, shareApp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +27,7 @@ public class SettingsActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         back = findViewById(R.id.settingsBack);
         appVersion = findViewById(R.id.app_version);
+        shareApp = findViewById(R.id.shareApp);
 
         try{
             String version = getPackageManager().getPackageInfo(getPackageName(), 0).versionName;
@@ -34,6 +35,17 @@ public class SettingsActivity extends AppCompatActivity {
         }catch (PackageManager.NameNotFoundException e){
             Log.e("tag", e.getMessage());
         }
+
+        shareApp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent shareIntent = new Intent(Intent.ACTION_SEND);
+                shareIntent.setType("text/plain");
+                shareIntent.putExtra(android.content.Intent.EXTRA_TEXT, "Text");
+                shareIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Subject");
+                startActivity(Intent.createChooser(shareIntent, "Share using"));
+            }
+        });
 
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 

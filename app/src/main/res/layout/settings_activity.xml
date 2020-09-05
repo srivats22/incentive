@@ -155,7 +155,7 @@
                 layout_gravity:layout_constraintTop_toBottomOf="@+id/devRelated" />
 
             <TextView
-                android:id="@+id/textView4"
+                android:id="@+id/shareApp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="35dp"
@@ -180,7 +180,7 @@
                 android:textColor="#000"
                 android:textSize="20sp"
                 layout_gravity:layout_constraintStart_toStartOf="parent"
-                layout_gravity:layout_constraintTop_toBottomOf="@+id/textView4" />
+                layout_gravity:layout_constraintTop_toBottomOf="@+id/shareApp" />
 
             <TextView
                 android:id="@+id/app_version"
