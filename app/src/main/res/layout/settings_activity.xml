@@ -1,4 +1,4 @@
-<LinearLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     xmlns:android="http://schemas.android.com/apk/res/android"
@@ -21,24 +21,28 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@android:color/transparent"
-            android:src="@drawable/ic_baseline_arrow_back_24" />
+            layout_gravity:srcCompat="@drawable/ic_baseline_arrow_back_24" />
 
         <TextView
             android:id="@+id/toolbar_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
             android:fontFamily="@font/montserrat"
             android:text="Settings"
             android:textColor="#000"
-            android:textSize="20sp" />
+            android:textSize="@dimen/title"
+            android:layout_marginLeft="@dimen/title_left_margin"/>
 
     </androidx.appcompat.widget.Toolbar>
 
     <ScrollView
         android:id="@+id/scrollView3"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        layout_gravity:layout_constraintEnd_toEndOf="parent"
+        layout_gravity:layout_constraintStart_toStartOf="parent"
+        android:paddingBottom="50dp"
+        layout_gravity:layout_constraintTop_toBottomOf="@+id/settings_toolbar">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -59,32 +63,22 @@
                 layout_gravity:layout_constraintStart_toStartOf="parent"
                 layout_gravity:layout_constraintTop_toTopOf="parent" />
 
-            <LinearLayout
-                android:orientation="horizontal"
-                android:id="@+id/privacyLayout"
+            <TextView
+                android:id="@+id/privacyTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="35dp"
                 android:layout_marginLeft="35dp"
                 android:layout_marginTop="10dp"
+                android:fontFamily="@font/montserrat"
+                android:text="@string/privacy"
+                android:textColor="#000"
+                android:textSize="20sp"
                 layout_gravity:layout_constraintStart_toStartOf="parent"
-                layout_gravity:layout_constraintTop_toBottomOf="@+id/appRelatedTextView">
-
-                <TextView
-                    android:id="@+id/privacyTextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/montserrat"
-                    android:text="@string/privacy"
-                    android:textColor="#000"
-                    android:textSize="20sp"
-                    layout_gravity:layout_constraintStart_toStartOf="parent"
-                    layout_gravity:layout_constraintTop_toBottomOf="@+id/appRelatedTextView" />/>
-
-            </LinearLayout>
+                layout_gravity:layout_constraintTop_toBottomOf="@+id/appRelatedTextView" />
 
             <TextView
-                android:id="@+id/termsOfUserTextView"
+                android:id="@+id/termsOfUseTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="35dp"
@@ -95,7 +89,7 @@
                 android:textColor="#000"
                 android:textSize="20sp"
                 layout_gravity:layout_constraintStart_toStartOf="parent"
-                layout_gravity:layout_constraintTop_toBottomOf="@+id/privacyLayout" />
+                layout_gravity:layout_constraintTop_toBottomOf="@+id/privacyTextView" />
 
             <TextView
                 android:id="@+id/aboutApp"
@@ -109,7 +103,7 @@
                 android:textColor="#000"
                 android:textSize="20sp"
                 layout_gravity:layout_constraintStart_toStartOf="parent"
-                layout_gravity:layout_constraintTop_toBottomOf="@+id/termsOfUserTextView" />
+                layout_gravity:layout_constraintTop_toBottomOf="@+id/termsOfUseTextView" />
 
             <View
                 android:id="@+id/divider"
@@ -117,7 +111,7 @@
                 android:layout_height="1dp"
                 android:layout_marginStart="20dp"
                 android:layout_marginLeft="20dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginEnd="20dp"
                 android:layout_marginRight="20dp"
                 android:background="?android:attr/listDivider"
@@ -169,7 +163,7 @@
                 layout_gravity:layout_constraintTop_toBottomOf="@+id/appRateTextView" />
 
             <TextView
-                android:id="@+id/textView6"
+                android:id="@+id/contactDev"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="35dp"
@@ -197,10 +191,10 @@
                 android:textSize="18sp"
                 layout_gravity:layout_constraintEnd_toEndOf="parent"
                 layout_gravity:layout_constraintStart_toStartOf="parent"
-                layout_gravity:layout_constraintTop_toBottomOf="@+id/textView6" />
+                layout_gravity:layout_constraintTop_toBottomOf="@+id/contactDev" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </ScrollView>
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

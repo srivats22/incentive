@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.text.InputType;
 import android.view.Gravity;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
@@ -36,6 +37,9 @@ public class AddTask extends AppCompatActivity {
         backBtn = findViewById(R.id.viewToHome);
         addTask = findViewById(R.id.addTaskToDB);
         pBar = findViewById(R.id.progressBar);
+
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
+
         //Edit Text related
         taskName = findViewById(R.id.taskNameEditText);
         taskDesc = findViewById(R.id.taskDescEditText);

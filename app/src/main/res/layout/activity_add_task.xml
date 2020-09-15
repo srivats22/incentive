@@ -6,7 +6,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AddTask">
+    tools:context=".AddTask"
+    android:background="@android:color/white">
 
 
     <androidx.appcompat.widget.Toolbar
@@ -27,11 +28,11 @@
             android:id="@+id/toolbar_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
             android:fontFamily="@font/montserrat"
+            android:layout_marginLeft="@dimen/title_left_margin"
             android:text="Add Task"
             android:textColor="#000"
-            android:textSize="20sp" />
+            android:textSize="@dimen/title" />
 
     </androidx.appcompat.widget.Toolbar>
 
@@ -63,6 +64,7 @@
                 app:errorEnabled="true"
                 android:textCursorDrawable="@android:color/black"
                 android:hint="Task Name"
+                android:focusedByDefault="true"
                 app:boxBackgroundMode="outline"
                 app:hintTextColor="@color/colorAccent"
                 app:boxStrokeColor="@color/colorAccent"
@@ -88,6 +90,7 @@
                 android:layout_marginRight="30dp"
                 app:counterEnabled="true"
                 app:counterMaxLength="256"
+                android:gravity="start"
                 app:hintTextColor="@color/colorAccent"
                 android:hint="Task Description"
                 app:boxStrokeColor="@color/colorAccent"
@@ -98,11 +101,12 @@
                 app:layout_constraintTop_toBottomOf="@+id/taskNameEditText">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:inputType="textMultiLine|text"
+                    android:inputType="textMultiLine"
+                    android:gravity="start"
                     android:lines="3"
                     android:maxLength="256"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"/>
+                    android:layout_height="wrap_content"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -120,6 +124,7 @@
                 android:hint="Task Reward"
                 android:lines="3"
                 app:counterEnabled="true"
+                android:gravity="start"
                 app:counterMaxLength="256"
                 app:boxStrokeColor="@color/colorAccent"
                 app:hintTextColor="@color/colorAccent"
@@ -128,7 +133,8 @@
                 app:layout_constraintTop_toBottomOf="@id/taskDescEditText">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:inputType="textMultiLine|text"
+                    android:inputType="textMultiLine"
+                    android:gravity="start"
                     android:lines="3"
                     android:maxLength="256"
                     android:layout_width="match_parent"

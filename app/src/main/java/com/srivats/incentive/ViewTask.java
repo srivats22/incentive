@@ -41,9 +41,9 @@ public class ViewTask extends AppCompatActivity{
         taskRewardDisplay = findViewById(R.id.detailTaskReward);
         backBtn = findViewById(R.id.viewToHome);
 
-        taskNameDisplay.setText(taskName);
-        taskDescDisplay.setText(taskDesc);
-        taskRewardDisplay.setText(taskReward);
+        taskNameDisplay.setText(String.format("Task Name: %s", taskName));
+        taskDescDisplay.setText(String.format("Task Description: %s", taskDesc));
+        taskRewardDisplay.setText(String.format("Task Reward: %s", taskReward));
 
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override

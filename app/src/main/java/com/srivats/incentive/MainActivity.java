@@ -8,6 +8,7 @@ import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.drawable.Icon;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
@@ -25,6 +26,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.analytics.FirebaseAnalytics;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.srivats.incentive.Adapter.TaskAdapter;
 import com.srivats.incentive.DB.TaskDatabase;
 import com.srivats.incentive.Helper.TaskModal;
@@ -52,6 +55,7 @@ public class MainActivity extends AppCompatActivity implements TaskAdapter.OnNot
         myToolbar.setElevation(0);
         myToolbar.setBackgroundColor(Color.parseColor("#ffffff"));
         setSupportActionBar(myToolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
         loadView();
         displayList();
     }
@@ -88,7 +92,7 @@ public class MainActivity extends AppCompatActivity implements TaskAdapter.OnNot
     public void onNoteClick(final int pos) {
         new AlertDialog.Builder(MainActivity.this)
                 .setTitle("Options:")
-                .setItems(new String[]{"View Tasks","Delete"}, new DialogInterface.OnClickListener() {
+                .setItems(new String[]{"View Tasks","DELETE"}, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         switch (i) {
