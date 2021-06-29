@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ViewTask"
-    android:background="@android:color/white">
+    android:background="@android:color/white"
+    tools:context=".OfflineScreen.ViewTask">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/viewTaskToolbar"
@@ -28,10 +28,10 @@
             android:id="@+id/toolbar_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/title_left_margin"
             android:fontFamily="@font/montserrat"
             android:text="View Task"
             android:textColor="#000"
-            android:layout_marginLeft="@dimen/title_left_margin"
             android:textSize="@dimen/title" />
 
     </androidx.appcompat.widget.Toolbar>
@@ -99,6 +99,23 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/detailTaskDesc" />
+
+            <TextView
+                android:id="@+id/textViewPriority"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginRight="30dp"
+                android:fontFamily="@font/montserrat"
+                android:text="Task Priority"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@android:color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/detailTaskReward" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView
+    android:id="@+id/task_display"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -31,13 +32,13 @@
             android:id="@+id/task_title_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:singleLine="true"
             android:layout_marginStart="15dp"
             android:layout_marginLeft="15dp"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
-            android:fontFamily="@font/montserrat"
             android:ellipsize="end"
+            android:fontFamily="@font/montserrat"
+            android:singleLine="true"
             android:text="TextView"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:textColor="#000000"

@@ -6,8 +6,10 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import java.io.Serializable;
+
 @Entity(tableName = "Task_table")
-public class TaskModal {
+public class TaskModal implements Serializable {
 
     @PrimaryKey(autoGenerate = true)
     private long task_id;
@@ -16,13 +18,13 @@ public class TaskModal {
     private String task_name;
     private String task_desc;
     private String task_reward;
+    private String priority;
 
-    public TaskModal(){}
-
-    public TaskModal(String task_name, String task_desc, String task_reward){
+    public TaskModal(String task_name, String task_desc, String task_reward, String priority){
         this.task_name = task_name;
         this.task_desc = task_desc;
         this.task_reward = task_reward;
+        this.priority = priority;
     }
 
     public long getTask_id() {
@@ -56,5 +58,13 @@ public class TaskModal {
 
     public void setTask_reward(String task_reward) {
         this.task_reward = task_reward;
+    }
+
+    public String getPriority() {
+        return priority;
+    }
+
+    public void setPriority(String priority) {
+        this.priority = priority;
     }
 }

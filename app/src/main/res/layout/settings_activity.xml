@@ -1,5 +1,4 @@
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
@@ -21,17 +20,19 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@android:color/transparent"
-            layout_gravity:srcCompat="@drawable/ic_baseline_arrow_back_24" />
+            layout_gravity:srcCompat="@drawable/ic_baseline_arrow_back_24"
+            android:contentDescription="Back To Home Page" />
 
         <TextView
             android:id="@+id/toolbar_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/montserrat"
-            android:text="Settings"
+            android:text="@string/settings"
             android:textColor="#000"
             android:textSize="@dimen/title"
-            android:layout_marginLeft="@dimen/title_left_margin"/>
+            android:layout_marginLeft="@dimen/title_left_margin"
+            android:layout_marginStart="@dimen/title_left_margin" />
 
     </androidx.appcompat.widget.Toolbar>
 
@@ -46,7 +47,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
             <TextView
                 android:id="@+id/appRelatedTextView"
@@ -105,19 +106,33 @@
                 layout_gravity:layout_constraintStart_toStartOf="parent"
                 layout_gravity:layout_constraintTop_toBottomOf="@+id/termsOfUseTextView" />
 
+            <TextView
+                android:id="@+id/whats_new"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="35dp"
+                android:layout_marginLeft="35dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/montserrat"
+                android:text="What's New"
+                android:textColor="#000"
+                android:textSize="20sp"
+                layout_gravity:layout_constraintStart_toStartOf="parent"
+                layout_gravity:layout_constraintTop_toBottomOf="@+id/aboutApp" />
+
             <View
                 android:id="@+id/divider"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_marginStart="20dp"
                 android:layout_marginLeft="20dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginEnd="20dp"
                 android:layout_marginRight="20dp"
                 android:background="?android:attr/listDivider"
                 layout_gravity:layout_constraintEnd_toEndOf="parent"
                 layout_gravity:layout_constraintStart_toStartOf="parent"
-                layout_gravity:layout_constraintTop_toBottomOf="@+id/aboutApp" />
+                layout_gravity:layout_constraintTop_toBottomOf="@+id/whats_new" />
 
             <TextView
                 android:id="@+id/devRelated"
@@ -170,28 +185,11 @@
                 android:layout_marginLeft="35dp"
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/montserrat"
-                android:text="Contact Developer"
+                android:text="@string/contact_developer"
                 android:textColor="#000"
                 android:textSize="20sp"
                 layout_gravity:layout_constraintStart_toStartOf="parent"
                 layout_gravity:layout_constraintTop_toBottomOf="@+id/shareApp" />
-
-            <TextView
-                android:id="@+id/app_version"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="176dp"
-                android:layout_marginLeft="176dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="177dp"
-                android:layout_marginRight="177dp"
-                android:fontFamily="@font/montserrat"
-                android:text=""
-                android:textColor="#000"
-                android:textSize="18sp"
-                layout_gravity:layout_constraintEnd_toEndOf="parent"
-                layout_gravity:layout_constraintStart_toStartOf="parent"
-                layout_gravity:layout_constraintTop_toBottomOf="@+id/contactDev" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

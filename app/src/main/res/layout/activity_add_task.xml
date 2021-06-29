@@ -6,7 +6,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AddTask"
+    tools:context=".OfflineScreen.AddTask"
     android:background="@android:color/white">
 
 
@@ -41,7 +41,8 @@
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:visibility="invisible" />
+        android:visibility="invisible"
+        android:indeterminate="true"/>
 
     <ScrollView
         android:id="@+id/scrollView2"
@@ -53,7 +54,7 @@
             android:layout_height="match_parent">
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/taskNameEditText"
+                android:id="@+id/taskNameInputLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
@@ -73,14 +74,15 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
-                <com.google.android.material.textfield.TextInputEditText
+                <EditText
+                    android:id="@+id/taskNameEditText"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/taskDescEditText"
+                android:id="@+id/taskDescInputLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
@@ -98,9 +100,10 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/taskNameEditText">
+                app:layout_constraintTop_toBottomOf="@+id/taskNameInputLayout">
 
-                <com.google.android.material.textfield.TextInputEditText
+                <EditText
+                    android:id="@+id/taskDescEditText"
                     android:inputType="textMultiLine"
                     android:gravity="start"
                     android:lines="3"
@@ -111,7 +114,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/taskRewardEditText"
+                android:id="@+id/taskRewardInputLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
@@ -130,15 +133,38 @@
                 app:hintTextColor="@color/colorAccent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/taskDescEditText">
+                app:layout_constraintTop_toBottomOf="@id/taskDescInputLayout">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:inputType="textMultiLine"
+                <EditText
+                    android:id="@+id/taskRewardEditText"
                     android:gravity="start"
-                    android:lines="3"
+                    android:lines="1"
                     android:maxLength="256"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/spinnerInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginRight="30dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:boxBackgroundMode="outline"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                app:layout_constraintTop_toBottomOf="@+id/taskRewardInputLayout">
+
+                <Spinner
+                    android:id="@+id/priority"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -147,18 +173,18 @@
                 android:id="@+id/addTaskToDB"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="161dp"
-                android:layout_marginLeft="161dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="161dp"
-                android:layout_marginRight="161dp"
+                android:layout_marginStart="148dp"
+                android:layout_marginLeft="148dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="149dp"
+                android:layout_marginRight="149dp"
+                android:enabled="false"
+                android:fontFamily="@font/montserrat"
                 android:text="Add Task"
                 android:textColor="#000"
-                android:fontFamily="@font/montserrat"
-                app:backgroundTint="@color/colorAccent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/taskRewardEditText" />
+                app:layout_constraintTop_toBottomOf="@+id/spinnerInputLayout" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
